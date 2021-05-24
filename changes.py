@@ -29,6 +29,8 @@ for coin in gecko_list:
     except Exception as e:
         print(e)
         print('coin: ' + coin)
+    
+    if 
  
  # Constructs a pandas dataframe based on the coin data that is returned 
 frame_list = [
@@ -63,3 +65,13 @@ cleaned_df = df_cryptocurrency.dropna()
 # print(cleaned_df.head(5))
  
 print(cleaned_df)
+
+
+prev_price_history = {'currency_name': 'bitcoin'}
+for index, price_history in cleaned_df.iterrows():
+    if price_history['currency_name'] == prev_price_history['currency_name']:
+        prev_price_history = price_history
+    else:
+        print('Last price history for ', prev_price_history['currency_name'], ' is ', prev_price_history['value'])
+        prev_price_history = price_history
+print('Last price history for', prev_price_history['currency_name'], ' is ', prev_price_history['value'])
